@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id               String @id @default(cuid())
+  name             String
+  frontEndStoreUrl String
+  stripeKey        String
+  userId           String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
