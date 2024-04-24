@@ -37,6 +37,11 @@ export const MainNav = ({
       label: "Sizes",
       isActive: pathname === `/${params.storeId}/sizes`,
     },
+    {
+      href: `/${params.storeId}/colors`,
+      label: "Colors",
+      isActive: pathname === `/${params.storeId}/colors`,
+    },
   ];
 
   return (
