@@ -27,6 +27,11 @@ export const MainNav = ({
       label: "Billboards",
       isActive: pathname === `/${params.storeId}/billboards`,
     },
+    {
+      href: `/${params.storeId}/categories`,
+      label: "Categories",
+      isActive: pathname === `/${params.storeId}/categries`,
+    },
   ];
 
   return (
