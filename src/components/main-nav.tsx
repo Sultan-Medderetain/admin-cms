@@ -30,7 +30,12 @@ export const MainNav = ({
     {
       href: `/${params.storeId}/categories`,
       label: "Categories",
-      isActive: pathname === `/${params.storeId}/categries`,
+      isActive: pathname === `/${params.storeId}/categories`,
+    },
+    {
+      href: `/${params.storeId}/sizes`,
+      label: "Sizes",
+      isActive: pathname === `/${params.storeId}/sizes`,
     },
   ];
 
