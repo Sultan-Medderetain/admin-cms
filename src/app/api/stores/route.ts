@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const { name } = body;
+    const { name, frontEndStoreUrl, stripeKey } = body;
 
     if (!name) {
       return new NextResponse("Invalid Request", { status: 404 });
@@ -22,6 +22,8 @@ export async function POST(req: Request) {
       data: {
         name: name,
         userId: userId,
+        frontEndStoreUrl,
+        stripeKey,
       },
     });
 
