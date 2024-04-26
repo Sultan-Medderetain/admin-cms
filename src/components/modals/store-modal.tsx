@@ -23,12 +23,6 @@ const formValidation = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  frontEndStoreUrl: z.string().url({
-    message: "Invalid frontend",
-  }),
-  stripeKey: z.string().min(10, {
-    message: "Invalid stripe key",
-  }),
 });
 
 export const StoreModal = () => {
@@ -39,8 +33,6 @@ export const StoreModal = () => {
     resolver: zodResolver(formValidation),
     defaultValues: {
       name: "",
-      frontEndStoreUrl: "",
-      stripeKey: "",
     },
   });
 
@@ -51,12 +43,6 @@ export const StoreModal = () => {
       const res = await axios.post("/api/stores", data);
 
       toast.success("Store created successfully");
-
-      // await new Promise<void>((resolve, reject) => {
-      //   setTimeout(() => {
-      //     resolve();
-      //   }, 2500);
-      // });
 
       router.push(`/${res.data.id}`);
     } catch (error) {
@@ -98,47 +84,6 @@ export const StoreModal = () => {
                   );
                 }}
               />
-
-              <FormField
-                name="frontEndStoreUrl"
-                control={form.control}
-                render={({ field }) => {
-                  return (
-                    <FormItem className="mt-6">
-                      <Label>Store URL</Label>
-                      <FormControl>
-                        <Input
-                          disabled={isSubmitting}
-                          placeholder="https://abc.ecommerce.xyz"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-
-              <FormField
-                name="stripeKey"
-                control={form.control}
-                render={({ field }) => {
-                  return (
-                    <FormItem className="mt-6">
-                      <Label>Payment key</Label>
-                      <FormControl>
-                        <Input
-                          disabled={isSubmitting}
-                          placeholder="Stripe Secret..."
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-
               <div className="pt-6 space-x-2 flex items-center justify-end">
                 <Button
                   variant="outline"

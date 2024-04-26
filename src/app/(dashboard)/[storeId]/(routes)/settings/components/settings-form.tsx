@@ -32,12 +32,6 @@ const formSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  frontEndStoreUrl: z.string().url({
-    message: "Invalid frontend",
-  }),
-  stripeKey: z.string().min(10, {
-    message: "Invalid stripe key",
-  }),
 });
 
 type SettingFormValueType = z.infer<typeof formSchema>;
@@ -51,8 +45,6 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: initialData.name,
-      frontEndStoreUrl: initialData.frontEndStoreUrl,
-      stripeKey: initialData.stripeKey,
     },
   });
 
@@ -127,38 +119,6 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
                       {...field}
                       disabled={isSubmitting}
                       placeholder="Store Name"
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="frontEndStoreUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isSubmitting}
-                      placeholder="URL"
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="stripeKey"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isSubmitting}
-                      placeholder="Stripe key"
                     />
                   </FormControl>
                 </FormItem>

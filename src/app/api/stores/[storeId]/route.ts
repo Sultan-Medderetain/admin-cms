@@ -19,7 +19,7 @@ export async function PATCH(
 
     const body = await req.json();
 
-    const { name, frontEndStoreUrl, stripeKey } = body;
+    const { name } = body;
 
     const store = await prismadb.store.update({
       where: {
@@ -27,8 +27,6 @@ export async function PATCH(
       },
       data: {
         userId,
-        stripeKey,
-        frontEndStoreUrl,
         name,
       },
     });

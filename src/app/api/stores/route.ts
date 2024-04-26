@@ -12,17 +12,15 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const { name, frontEndStoreUrl, stripeKey } = body;
+    const { name } = body;
 
-    if (!stripeKey || !name || !frontEndStoreUrl) {
+    if (!name) {
       return new NextResponse("Invalid Request", { status: 404 });
     }
 
     const store = await prismadb.store.create({
       data: {
         name: name,
-        frontEndStoreUrl: frontEndStoreUrl,
-        stripeKey: stripeKey,
         userId: userId,
       },
     });
